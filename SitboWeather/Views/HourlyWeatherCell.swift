@@ -54,7 +54,7 @@ class HourlyWeatherCell: UICollectionViewCell {
         timeLabel.text = time
         tempLabel.text = temp
         
-        iconImageView.image = UIImage(systemName: "cloud.sun.fill")
+        iconImageView.image = UIImage(systemName: iconName)
     }
     
 }

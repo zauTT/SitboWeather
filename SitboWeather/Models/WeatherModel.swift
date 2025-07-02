@@ -22,12 +22,20 @@ struct TimeSeries: Decodable {
 
 struct WeatherData: Decodable {
     let instant: InstantDetails
-    let next1Hours: ForecastSummary?
-    
+    let next1Hours: ForecastContainer?
+    let next6Hours: ForecastContainer?
+    let next12Hours: ForecastContainer?
+
     enum CodingKeys: String, CodingKey {
         case instant
         case next1Hours = "next_1_hours"
+        case next6Hours = "next_6_hours"
+        case next12Hours = "next_12_hours"
     }
+}
+
+struct ForecastContainer: Decodable {
+    let summary: ForecastSummary?
 }
 
 struct InstantDetails: Decodable {
@@ -35,12 +43,8 @@ struct InstantDetails: Decodable {
 }
 
 struct ForecastSummary: Decodable {
-    let summary: SymbolCode
-}
+    let symbolCode: String?
 
-struct SymbolCode: Decodable {
-    let symbolCode: String
-    
     enum CodingKeys: String, CodingKey {
         case symbolCode = "symbol_code"
     }
